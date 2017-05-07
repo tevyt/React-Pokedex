@@ -5,7 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 import App from './app';
-import PokemonList from './pokemon';
+import Pokedex from './pokedex';
 import store from './store';
 
 import './styles/base.scss';
@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
-        <Route path="/pokedex" component={PokemonList} />
+        <Route path="/pokedex" component={Pokedex} />
       </App>
     </Router>
   </Provider>,
