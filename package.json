@@ -1,13 +1,14 @@
 {
   "name": "pokedex",
   "version": "1.0.0",
-  "description": "",
+  "description": "A pokedex built using the https://pokeapi.co/",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --hot --progress --colors"
   },
-  "author": "",
+  "author": "Travis Smith (travis.alexander.smith@gmail.com)",
   "license": "ISC",
+  "repository": "https://github.com/tevyt/React-Pokedex",
   "babel": {
     "presets": [
       "es2015",
@@ -28,12 +29,13 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "eslint-plugin-node": "^4.2.2",
     "immutable": "^3.8.1",
     "material-ui": "^0.18.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
-    "react-router": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0"
   }
 }
