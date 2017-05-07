@@ -1,2 +1,6 @@
 @import './pallet';
 @import './typography';
+
+body {
+  font-family: $body-font;
+}
