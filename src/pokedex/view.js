@@ -1,10 +1,14 @@
 import AppBar from 'material-ui/AppBar';
+import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 import React from 'react'; //eslint-disable-line no-unused-vars
 
 import { getPokemonList } from '../loaders';
+import PokedexEntry from './components/pokedex-entry';
+
+import styles from './styles.scss';
 
 
 export default class PokemonList extends React.Component {
@@ -31,15 +35,22 @@ export default class PokemonList extends React.Component {
       return <h1>Failed!</h1>;
     }
     if (this.props.loaded) {
-      return <div className="pokemonList">
-        <AppBar title = "Pokédex"
-                iconElementLeft = { <IconButton> < NavigationChevronLeft / > </IconButton>}
+      return <div className='pokemon-list'>
+        <AppBar title = 'Pokédex'
+                className='pokemon-list_header'
+                iconElementLeft = { <IconButton> <NavigationChevronLeft/> </IconButton>}
                 iconElementRight = { <IconButton><NavigationChevronRight /></IconButton>}
                 onLeftIconButtonTouchTap={this.props.previousPage}
                 onRightIconButtonTouchTap={this.props.nextPage}/>
-        {this.props.pokemon.map((monster, index) => {
-          return <li className="pokemonList_item" key={index}>{monster.get('name')}</li>;
-        })}
+        <div class='pokemon-list_container'>
+          <GridList cols={4} padding={20}  className='pokemon-list_grid'>
+          {this.props.pokemon.map((monster, index) => {
+            return <GridTile title={monster.name} className='pokemon-list_item' key={index}>
+                     <PokedexEntry image={monster.get('imageUrl')}/>
+                   </GridTile>;
+          })}
+          </GridList>
+        </div>
       </div>;
     }
     else{
