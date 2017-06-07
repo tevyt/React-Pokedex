@@ -2,21 +2,33 @@ import { connect } from 'react-redux';
 
 import View from './view';
 
+import { fetchPokemonList } from '../services';
+
+const pokemonListField = (field) => ['data', 'pokemonList', field];
+
 const mapStateToProps = (state) => {
+  const fetchedPokemon = state.getIn(pokemonListField('data'));
+  const pokemon = fetchedPokemon ?
+                  fetchedPokemon.toJS() :
+                  [];
+
   return {
-    loaded: state.getIn(['data', 'pokemonList', 'loaded']),
-    loading: state.getIn(['data', 'pokemonList', 'loading']),
-    failed: state.getIn(['data', 'pokemonList', 'failed']),
-    pokemon: state.getIn(['data', 'pokemonList', 'data'  ]),
-    page: state.getIn(['pokemonList', 'page']),
-    loadedPage: state.getIn(['data','pokemonList', 'loadedPage'])
+    loaded: state.getIn(pokemonListField('loaded')),
+    loading: state.getIn(pokemonListField('loading')),
+    failed: state.getIn(pokemonListField('failed')),
+    pokemon
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
+  const success = (data) => dispatch({type: 'LOAD_END', id: 'pokemonList', data});
+  const fail = () => dispatch({type: 'LOAD_FAIL' });
   return {
-    previousPage: () => dispatch({type: 'PREVIOUS_PAGE'}),
-    nextPage: () => dispatch({type: 'NEXT_PAGE'})
+    loadPokemon: (page) => {
+      dispatch({ type: 'LOAD_START', id: 'pokemonList' });
+      fetchPokemonList(page)
+      .then(success, fail);
+    }
   };
 };
 

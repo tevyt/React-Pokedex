@@ -1,16 +1,13 @@
-import { Map } from 'immutable';
-
+import { fromJS } from 'immutable';
 import DataReducer from './data';
-import PokemonListReducer from './pokemonList';
 
-const initialState = new Map({
+const initialState = fromJS({
   data: null,
   pokemonList: null
 });
 
 export default (state=initialState, action) => {
-  return Map({
-    data: DataReducer(state.get('data'), action),
-    pokemonList: PokemonListReducer(state.get('pokemonList'), action)
+  return fromJS({
+    data: DataReducer(state.get('data'), action)
   });
 };

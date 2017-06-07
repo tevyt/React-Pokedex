@@ -1,6 +1,6 @@
-import { Map } from 'immutable';
+import { fromJS } from 'immutable';
 
-const initialState = Map();
+const initialState = fromJS({});
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -20,7 +20,6 @@ export default (state = initialState, action) => {
         loading: false,
         failed: false,
         data: action.data,
-        loadedPage: action.page || 0
       }
     });
   case 'LOAD_FAIL': 

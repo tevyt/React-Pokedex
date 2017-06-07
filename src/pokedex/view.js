@@ -5,11 +5,14 @@ import NavigationChevronLeft from 'material-ui/svg-icons/navigation/chevron-left
 import NavigationChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 import React from 'react'; //eslint-disable-line no-unused-vars
 
-import { getPokemonList } from '../loaders';
 import PokedexEntry from './components/pokedex-entry';
 
-import styles from './styles.scss';
+import './styles.scss';
 
+const pad = (n, width) => {
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+};
 
 export default class PokemonList extends React.Component {
   constructor(props) {
@@ -17,15 +20,9 @@ export default class PokemonList extends React.Component {
   }
 
   componentWillMount(){
-    getPokemonList(this.props.page);
+    const page = this.props.match.params.page;
+    this.props.loadPokemon(page);
   }
-
-  componentDidUpdate() {
-    if(this.props.loadedPage && (this.props.page !== this.props.loadedPage)){
-      getPokemonList(this.props.page);
-    }
-  }
-
 
   render() {
     if (this.props.loading) {
@@ -42,11 +39,11 @@ export default class PokemonList extends React.Component {
                 iconElementRight = { <IconButton><NavigationChevronRight /></IconButton>}
                 onLeftIconButtonTouchTap={this.props.previousPage}
                 onRightIconButtonTouchTap={this.props.nextPage}/>
-        <div class='pokemon-list_container'>
+        <div className='pokemon-list_container'>
           <GridList cols={4} padding={20}  className='pokemon-list_grid'>
           {this.props.pokemon.map((monster, index) => {
             return <GridTile title={monster.name} className='pokemon-list_item' key={index}>
-                     <PokedexEntry image={monster.get('imageUrl')}/>
+                     <PokedexEntry image={`http://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pad(monster['pokedex_number'], 3)}.png`}/>
                    </GridTile>;
           })}
           </GridList>
