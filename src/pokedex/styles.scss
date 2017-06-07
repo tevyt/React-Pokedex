@@ -2,28 +2,12 @@
 
 .pokemon-list{
   padding: 25px;
-  &_header{
-    margin-bottom: 50px;
+  &__item{
+    &__image{
+      max-width: 200px;
+      max-height: 200px;
+      width: 100%;
+      background-color: $colour_image-background;
+    }
   }
-
-  &_grid{
-    width: 90%;
-    margin: auto !important;
-  }
-
-  &_container{
-    display: flex;
-    flex-wrap: 'wrap';
-    justify-content: space-around;
-  }
-
-  &_item:hover{
-    top: -0.5em;
-  }
-}
-.pokemon_image{
-  max-width: 200px;
-  max-height: 200px;
-  width: 100%;
-  background-color: $colour_image-background;
 }
