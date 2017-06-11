@@ -11,12 +11,19 @@ const mapStateToProps = (state) => {
   const pokemon = fetchedPokemon ?
                   fetchedPokemon.toJS() :
                   [];
+  
+  const numberOfPokemon = 721;
 
+  const numberOfPages = Math.ceil(numberOfPokemon/20);
+
+  const page = state.getIn(['pokedex', 'page']);
   return {
-    page: state.getIn(['pokedex', 'page']),
+    page,
     loaded: state.getIn(pokemonListField('loaded')),
     loading: state.getIn(pokemonListField('loading')),
     failed: state.getIn(pokemonListField('failed')),
+    firstPage: page == 1,
+    lastPage: page == numberOfPages,
     pokemon
   };
 };

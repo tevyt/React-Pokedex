@@ -37,9 +37,9 @@ export default class PokemonList extends React.Component {
       return <div className='mainContent'>
         <div className='navigation'>
           <LeftNavigationButton onClick={this.props.previousPage} 
-            text='PREVIOUS' show={true} />
+            text='PREVIOUS' hide={this.props.firstPage} />
           <RightNavigationButton onClick={this.props.nextPage} 
-            text='NEXT' show={true} />
+            text='NEXT' hide={this.props.lastPage} />
         </div>
         <div className='pokemon-list'>
           {this.props.pokemon.map((monster, index) => {
