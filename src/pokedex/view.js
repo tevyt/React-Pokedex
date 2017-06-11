@@ -23,7 +23,9 @@ export default class PokemonList extends React.Component {
   }
 
   componentDidUpdate(){
-    //this.props.loadPokemon(this.props.page);
+    if(this.props.pokemonShouldLoad){
+      this.props.loadPokemon(this.props.page);
+    }
   }
 
   render() {
