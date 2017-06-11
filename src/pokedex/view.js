@@ -17,8 +17,11 @@ export default class PokemonList extends React.Component {
   }
 
   componentWillMount(){
-    const page = this.props.match.params.page;
-    this.props.loadPokemon(page);
+    this.props.loadPokemon(this.props.page);
+  }
+
+  componentDidUpdate(){
+    //this.props.loadPokemon(this.props.page);
   }
 
   render() {
@@ -29,15 +32,26 @@ export default class PokemonList extends React.Component {
       return <h1>Failed!</h1>;
     }
     if (this.props.loaded) {
-      return <div className='pokemon-list'>
+      return <div className='mainContent'>
+        <div className='navigation'>
+          <button className='navigation__button--left' 
+            onClick={this.props.previousPage}>
+            <i className='fa fa-chevron-circle-left'/> PREVIOUS
+          </button>
+          <button className='navigation__button--right' onClick={this.props.nextPage}>
+            NEXT <i className='fa fa-chevron-circle-right' /> 
+          </button>
+        </div>
+        <div className='pokemon-list'>
           {this.props.pokemon.map((monster, index) => {
-            return <PokedexEntry 
-            key={index}
-            image={pokemonImageUrl(monster['pokedex_number'])}/>;
+            return <PokedexEntry
+              key={index}
+              image={pokemonImageUrl(monster['pokedex_number'])} />;
           })}
-        </div>;
+        </div>
+      </div>;
     }
-    else{
+    else {
       return null;
     }
   }

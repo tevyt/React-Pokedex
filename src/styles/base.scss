@@ -1,6 +1,10 @@
 @import './pallet';
 @import './typography';
+@import './common';
 
 body {
   font-family: $body-font;
+  width: 80%;
+  margin: auto;
+  padding-top: 5%;
 }

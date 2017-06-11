@@ -1,0 +1,26 @@
+@import './pallet.scss';
+
+.navigation {
+  padding-bottom: 40px;
+  button{
+    background-color: $colour_navigation-button;
+    color: $colour_white;
+    font-weight: bold;
+    width: 20%;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &:hover{
+      background-color: $colour_navigation-button-hover;
+    }
+  }
+  
+  &__button {
+    &--left {
+      float: left;
+    }
+    &--right {
+      float: right;
+    }
+  }
+}

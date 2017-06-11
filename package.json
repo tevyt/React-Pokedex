@@ -21,15 +21,20 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
     "eslint": "^3.19.0",
+    "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-react": "^7.0.0",
+    "file-loader": "^0.11.2",
+    "font-awesome-webpack": "0.0.5-beta.2",
+    "less-loader": "^4.0.4",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
     "webpack": "^2.5.0",
-    "webpack-dev-server": "^2.4.5",
-    "eslint-plugin-node": "^4.2.2"
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

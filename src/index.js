@@ -7,6 +7,7 @@ import App from './app';
 import Pokedex from './pokedex';
 import store from './store';
 
+import 'font-awesome/css/font-awesome.css';
 import './styles/base.scss';
 
 
@@ -14,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
-        <Route path="/pokedex/:page" component={Pokedex} />
+        <Route path="/pokedex" component={Pokedex} />
       </App>
     </Router>
   </Provider>,

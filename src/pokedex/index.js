@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
                   [];
 
   return {
+    page: state.getIn(['pokedex', 'page']),
     loaded: state.getIn(pokemonListField('loaded')),
     loading: state.getIn(pokemonListField('loading')),
     failed: state.getIn(pokemonListField('failed')),
@@ -28,7 +29,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: 'LOAD_START', id: 'pokemonList' });
       fetchPokemonList(page)
       .then(success, fail);
-    }
+    },
+    nextPage: () => dispatch({type: 'NEXT_PAGE'}),
+    previousPage: () => dispatch({type: 'PREVIOUS_PAGE'})
   };
 };
 
