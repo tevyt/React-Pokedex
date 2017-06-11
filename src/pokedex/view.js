@@ -1,6 +1,8 @@
 import React from 'react'; //eslint-disable-line no-unused-vars
 
 import PokedexEntry from './components/pokedex-entry';
+import LeftNavigationButton from './components/navigation-buttons/navigation-button-left';
+import RightNavigationButton from './components/navigation-buttons/navigation-button-right';
 
 import './styles.scss';
 
@@ -34,13 +36,10 @@ export default class PokemonList extends React.Component {
     if (this.props.loaded) {
       return <div className='mainContent'>
         <div className='navigation'>
-          <button className='navigation__button--left' 
-            onClick={this.props.previousPage}>
-            <i className='fa fa-chevron-circle-left'/> PREVIOUS
-          </button>
-          <button className='navigation__button--right' onClick={this.props.nextPage}>
-            NEXT <i className='fa fa-chevron-circle-right' /> 
-          </button>
+          <LeftNavigationButton onClick={this.props.previousPage} 
+            text='PREVIOUS' show={true} />
+          <RightNavigationButton onClick={this.props.nextPage} 
+            text='NEXT' show={true} />
         </div>
         <div className='pokemon-list'>
           {this.props.pokemon.map((monster, index) => {
