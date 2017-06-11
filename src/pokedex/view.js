@@ -44,7 +44,7 @@ export default class PokemonList extends React.Component {
         </div>
         <div className='pokemon-list'>
           {this.props.pokemon.map((monster, index) => {
-            return <PokedexEntry
+            return <PokedexEntry 
               key={index}
               image={pokemonImageUrl(monster['pokedex_number'])} />;
           })}
