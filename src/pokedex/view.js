@@ -18,42 +18,38 @@ export default class PokemonList extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.loadPokemon(this.props.page);
   }
 
-  componentDidUpdate(){
-    if(this.props.pokemonShouldLoad){
+  componentDidUpdate() {
+    if (this.props.pokemonShouldLoad) {
       this.props.loadPokemon(this.props.page);
     }
   }
 
   render() {
-    if (this.props.loading) {
-      return <h1>Loading...</h1>;
-    }
-    if (this.props.failed) {
-      return <h1>Failed!</h1>;
-    }
-    if (this.props.loaded) {
-      return <div className='mainContent'>
-        <div className='navigation'>
-          <LeftNavigationButton onClick={this.props.previousPage} 
-            text='PREVIOUS' hide={this.props.firstPage} />
-          <RightNavigationButton onClick={this.props.nextPage} 
-            text='NEXT' hide={this.props.lastPage} />
-        </div>
+    return <div className='mainContent'>
+      <div className='navigation'>
+        <LeftNavigationButton onClick={this.props.previousPage}
+          text='PREVIOUS' hide={this.props.firstPage} />
+        <RightNavigationButton onClick={this.props.nextPage}
+          text='NEXT' hide={this.props.lastPage} />
+      </div>
+      {this.props.loading ?
+        <h1>Loading...</h1> :
+        null
+      }
+      {this.props.pokemon ?
         <div className='pokemon-list'>
           {this.props.pokemon.map((monster, index) => {
             return <PokedexEntry 
               key={index}
               image={pokemonImageUrl(monster['pokedex_number'])} />;
           })}
-        </div>
-      </div>;
-    }
-    else {
-      return null;
-    }
+        </div> :
+        null
+      }
+    </div>;
   }
 }
