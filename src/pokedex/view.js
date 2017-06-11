@@ -3,6 +3,7 @@ import React from 'react'; //eslint-disable-line no-unused-vars
 import PokedexEntry from './components/pokedex-entry';
 import LeftNavigationButton from './components/navigation-buttons/navigation-button-left';
 import RightNavigationButton from './components/navigation-buttons/navigation-button-right';
+import PokeballLoadingSpinner from './components/pokeball-loading-spinner';
 
 import './styles.scss';
 
@@ -36,10 +37,7 @@ export default class PokemonList extends React.Component {
         <RightNavigationButton onClick={this.props.nextPage}
           text='NEXT' hide={this.props.lastPage} />
       </div>
-      {this.props.loading ?
-        <h1>Loading...</h1> :
-        null
-      }
+      <PokeballLoadingSpinner show={this.props.loading} />
       {this.props.pokemon ?
         <div className='pokemon-list'>
           {this.props.pokemon.map((monster, index) => {

@@ -7,6 +7,12 @@
   }
 }
 
+@keyframes spin{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 .pokemon-list {
   padding: 25px;
   display: flex;
@@ -24,5 +30,15 @@
       display: block;
       margin: auto;
     }
+  }
+}
+
+.loading-spinner{
+  width: 100%;
+  &__image{
+    display: block;
+    margin: auto;
+    max-width: 50px;
+    animation: spin 1.5s linear infinite;
   }
 }
