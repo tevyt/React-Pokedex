@@ -21,14 +21,28 @@
     width: 20%;
     margin: 2.5%; 
     background-color: $colour_image-background;
+    font-weight: bold;
     &:hover{
       animation-name: pokemon-hop;
       animation-duration: 0.5s;
+      cursor: hand;
+      cursor: pointer;
     }
     &__image {
-      width: 90%;
+      width: 80%;
       display: block;
       margin: auto;
+    }
+    &__description{
+      width: 100%;
+      background-color: $colour_white;
+      span{
+        display: block;
+      }
+      &__pokedex-number{
+        font-size: 0.75em;
+        color: $colour_pokedex-number;
+      }
     }
   }
 }
@@ -38,7 +52,7 @@
   &__image{
     display: block;
     margin: auto;
-    max-width: 50px;
-    animation: spin 1.5s linear infinite;
+    max-width: 20px;
+    animation: spin 0.5s linear infinite;
   }
 }

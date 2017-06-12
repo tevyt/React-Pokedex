@@ -9,8 +9,7 @@ export default (state = initialState, action) => {
       [action.id]: {
         loaded: false,
         loading: true,
-        failed: false,
-        data: null
+        failed: false
       }
     });
   case 'LOAD_END':
@@ -19,7 +18,7 @@ export default (state = initialState, action) => {
         loaded: true,
         loading: false,
         failed: false,
-        data: action.data,
+        data: action.data
       }
     });
   case 'LOAD_FAIL': 
@@ -28,7 +27,6 @@ export default (state = initialState, action) => {
         loaded: false,
         loading: false,
         failed: true,
-        data: null
       }
     });
   default:

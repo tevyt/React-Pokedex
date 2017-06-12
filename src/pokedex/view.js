@@ -7,12 +7,9 @@ import PokeballLoadingSpinner from './components/pokeball-loading-spinner';
 
 import './styles.scss';
 
-const pad = (n, width) => {
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
-};
+import { padNumber } from '../utilities';
 
-const pokemonImageUrl = (pokedexNumber) => `http://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pad(pokedexNumber, 3)}.png`;
+const pokemonImageUrl = (pokedexNumber) => `http://assets.pokemon.com/assets/cms2/img/pokedex/detail/${padNumber(pokedexNumber, 3)}.png`;
 
 export default class PokemonList extends React.Component {
   constructor(props) {
@@ -43,6 +40,10 @@ export default class PokemonList extends React.Component {
           {this.props.pokemon.map((monster, index) => {
             return <PokedexEntry 
               key={index}
+              pokedexNumber={monster['pokedex_number']}
+              name={monster['name']}
+              primaryType={monster['primary_type']}
+              secondaryType={monster['secondary_type']}
               image={pokemonImageUrl(monster['pokedex_number'])} />;
           })}
         </div> :

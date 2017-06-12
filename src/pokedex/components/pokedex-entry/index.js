@@ -1,8 +1,9 @@
 import React from 'react'; //eslint-disable-line no-unused-vars
 
+import PokemonTypePill from '../../../components/pokemon-type-pill';
 import { padNumber } from '../../../utilities';
 
-export default ({ image, name, pokedexNumber }) => {
+export default ({ image, name, pokedexNumber, primaryType, secondaryType }) => {
   return <div className='pokemon-list__item'>
           <img className='pokemon-list__item__image' src={image} />
           <div className='pokemon-list__item__description'>
@@ -15,6 +16,8 @@ export default ({ image, name, pokedexNumber }) => {
                                       Drop the '-normal part
                                       TODO Fix in Database*/}
             </span>
+            <PokemonTypePill type={primaryType} />
+            <PokemonTypePill type={secondaryType} />
           </div>
         </div>;
 };

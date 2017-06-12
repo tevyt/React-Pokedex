@@ -1,0 +1,76 @@
+.pill{
+  display: inline-block;
+  text-align: center;
+  font-weight: lighter;
+  &--small{
+    font-size: 0.5em;
+    margin-right: 5px;
+    width: 20%;
+    padding: 3px;
+    border-radius: 3px;
+  }
+  &--Poison{
+    background-color: #B97FC9;
+    color: white;
+  }
+  &--Water{
+    background-color: #4592C4;
+    color: white;
+  }
+  &--Normal{
+    background-color: #A4ACAF;
+  }
+  &--Bug{
+    background-color: #729F3F;
+    color: white;
+  }
+  &--Ghost{
+    background-color: #7B62A3;
+    color: white;
+  }
+  &--Fairy{
+    background-color: #FDB9E9;
+  }
+  &--Fighting{
+    background-color: #D56723;
+    color: white;
+  }
+  &--Electric{
+    background-color: #EED535;
+  }
+  &--Dragon{
+    background: linear-gradient(to bottom, #53A4CF, #F16E57);
+    color: white;
+  }
+  &--Grass{
+    background-color: #9BCC50;
+  }
+  &--Ice{
+    background-color: #51C4E7;
+  }
+  &--Ground{
+    background: linear-gradient(to bottom, #F7DE3F, #AB9842);
+  }
+  &--Flying{
+    background: linear-gradient(to bottom, #3DC7EF, #BDB9B8);
+  }
+  &--Psychic{
+    background-color: #F366B9;
+    color: white;
+  }
+  &--Dark{
+    background-color: #707070;
+    color: white;
+  }
+  &--Fire{
+    background-color: #FD7D24;
+    color: white;
+  }
+  &--Rock{
+    background-color: #A38C21;
+    color: white;
+  }
+  &--Steel{
+    background-color: #9EB7B8;
+  }
+}
