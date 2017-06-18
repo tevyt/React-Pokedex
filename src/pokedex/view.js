@@ -36,9 +36,9 @@ export default class PokemonList extends React.Component {
     return <div className='mainContent'>
       <div className='navigation'>
         <LeftNavigationButton onClick={previousPage}
-          text='PREVIOUS' hide={firstPage} />
+          text='PREVIOUS' hide={firstPage} disabled={loading} />
         <RightNavigationButton onClick={nextPage}
-          text='NEXT' hide={lastPage} />
+          text='NEXT' hide={lastPage} disabled={loading}/>
       </div>
       <PokeballLoadingSpinner show={loading} />
       {pokemon ?

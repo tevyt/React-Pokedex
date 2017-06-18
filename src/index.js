@@ -8,7 +8,7 @@ import Pokedex from './pokedex';
 import store from './app/store';
 
 import 'font-awesome/css/font-awesome.css';
-import './styles/base.scss';
+import './app/styles/base.scss';
 
 
 ReactDOM.render(

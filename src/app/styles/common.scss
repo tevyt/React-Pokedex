@@ -24,5 +24,8 @@
     &--right {
       float: right;
     }
+    &--disabled{
+      background-color: $colour_grey--light !important;
+    }
   }
 }
