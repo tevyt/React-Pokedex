@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 
   const correctPage= (pokedexNumber, page) => {
-    /*Logic to determine if pokemon should be re  pokemon[pokemon.length - 1] :loaded
+    /*Logic to determine if pokemon should be reloaded 
       Calculate the first pokemon and the last pokemon that
       would be on the current page take the pokedex number of the last loaded pokemon
       If the pokedex number is not in the range (firstOnPage, lastOnPage) 
