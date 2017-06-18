@@ -10,7 +10,7 @@ function getEntrySources(sources) {
 }
 
 module.exports = { //eslint-disable-line no-undef
-  entry: getEntrySources(['./src/index.js']),
+  entry: getEntrySources(['babel-polyfill', './src/index.js']),
   module: {
     loaders: [{
       test: /\.js?$/,

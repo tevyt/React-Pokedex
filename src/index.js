@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 
-import App from './app';
+import App from './app/app';
 import Pokedex from './pokedex';
-import store from './store';
+import store from './app/store';
 
 import 'font-awesome/css/font-awesome.css';
 import './styles/base.scss';

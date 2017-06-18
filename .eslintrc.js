@@ -31,6 +31,7 @@ module.exports = {
             "error",
             "always"
         ],
-        "react/jsx-uses-vars": [2]
+        "react/jsx-uses-vars": [2],
+        "arrow-parens": ["error", "always"]
     }
 };

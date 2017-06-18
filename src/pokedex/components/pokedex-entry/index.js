@@ -1,7 +1,7 @@
 import React from 'react'; //eslint-disable-line no-unused-vars
 
-import PokemonTypePill from '../../../components/pokemon-type-pill';
-import { padNumber } from '../../../utilities';
+import PokemonTypePill from '../../../app/components/pokemon-type-pill';
+import { padNumber } from '../../../app/utilities';
 
 export default ({ image, name, pokedexNumber, primaryType, secondaryType }) => {
   return <div className='pokemon-list__item'>

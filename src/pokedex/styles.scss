@@ -14,7 +14,7 @@
 }
 
 .pokemon-list {
-  padding: 25px;
+  padding: 2%;
   display: flex;
   flex-wrap: wrap;
   &__item {
@@ -42,6 +42,8 @@
       &__pokedex-number{
         font-size: 0.75em;
         color: $colour_pokedex-number;
+        padding-top: 15px;
+        margin-bottom: 15px;
       }
     }
   }

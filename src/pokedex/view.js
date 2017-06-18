@@ -7,7 +7,7 @@ import PokeballLoadingSpinner from './components/pokeball-loading-spinner';
 
 import './styles.scss';
 
-import { padNumber } from '../utilities';
+import { padNumber } from '../app/utilities';
 
 const pokemonImageUrl = (pokedexNumber) => `http://assets.pokemon.com/assets/cms2/img/pokedex/detail/${padNumber(pokedexNumber, 3)}.png`;
 
@@ -27,17 +27,23 @@ export default class PokemonList extends React.Component {
   }
 
   render() {
+    const { pokemon, 
+            previousPage, 
+            firstPage, 
+            nextPage, 
+            lastPage, 
+            loading } = this.props;
     return <div className='mainContent'>
       <div className='navigation'>
-        <LeftNavigationButton onClick={this.props.previousPage}
-          text='PREVIOUS' hide={this.props.firstPage} />
-        <RightNavigationButton onClick={this.props.nextPage}
-          text='NEXT' hide={this.props.lastPage} />
+        <LeftNavigationButton onClick={previousPage}
+          text='PREVIOUS' hide={firstPage} />
+        <RightNavigationButton onClick={nextPage}
+          text='NEXT' hide={lastPage} />
       </div>
-      <PokeballLoadingSpinner show={this.props.loading} />
-      {this.props.pokemon ?
+      <PokeballLoadingSpinner show={loading} />
+      {pokemon ?
         <div className='pokemon-list'>
-          {this.props.pokemon.map((monster, index) => {
+          {pokemon.map((monster, index) => {
             return <PokedexEntry 
               key={index}
               pokedexNumber={monster['pokedex_number']}
