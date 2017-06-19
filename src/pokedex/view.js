@@ -38,7 +38,6 @@ export default class PokemonList extends React.Component {
             loading, 
             onSearch, 
             query } = this.props;
-            console.log(query);
     return <div className='mainContent'>
       <div className='navigation'>
         <LeftNavigationButton onClick={previousPage}
@@ -48,7 +47,7 @@ export default class PokemonList extends React.Component {
           text='NEXT' hide={lastPage} disabled={loading}/>
       </div>
       <PokeballLoadingSpinner show={loading} />
-      {pokemon ?
+      {pokemon.length ?
         <div className='pokemon-list'>
           {pokemon.map((monster, index) => {
             return <PokedexEntry 
@@ -60,7 +59,11 @@ export default class PokemonList extends React.Component {
               image={pokemonImageUrl(monster['pokedex_number'])} />;
           })}
         </div> :
-        null
+       <div className='no-results-message'>
+        {query ? 
+          <span>No Pokemon match {`"${query}"`}</span> :
+          null}
+       </div> 
       }
     </div>;
   }

@@ -43,7 +43,7 @@ const loadPokemonStart = (state) => {
     loading: true,
     loaded: false,
     failed: false,
-    changed: false
+    changed: false,
   };
 };
 
@@ -74,7 +74,8 @@ const initalState = {
   loading: false,
   failed: false,
   changed: false,
-  pokemon: []
+  pokemon: [],
+  query: ''
 };
 
 export default handleActions({
