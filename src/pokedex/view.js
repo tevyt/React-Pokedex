@@ -4,6 +4,7 @@ import PokedexEntry from './components/pokedex-entry';
 import LeftNavigationButton from './components/navigation-buttons/navigation-button-left';
 import RightNavigationButton from './components/navigation-buttons/navigation-button-right';
 import PokeballLoadingSpinner from './components/pokeball-loading-spinner';
+import SearchBar from './components/search-bar';
 
 import './styles.scss';
 
@@ -17,12 +18,14 @@ export default class PokemonList extends React.Component {
   }
 
   componentWillMount() {
-    this.props.loadPokemon(this.props.page);
+    const { page, query, loadPokemon } = this.props;
+    loadPokemon(page, query);
   }
 
   componentDidUpdate() {
-    if (this.props.pokemonShouldLoad) {
-      this.props.loadPokemon(this.props.page);
+    const { page, query, pokemonShouldLoad, loadPokemon } = this.props;
+    if (pokemonShouldLoad) {
+      loadPokemon(page, query);
     }
   }
 
@@ -32,11 +35,15 @@ export default class PokemonList extends React.Component {
             firstPage, 
             nextPage, 
             lastPage, 
-            loading } = this.props;
+            loading, 
+            onSearch, 
+            query } = this.props;
+            console.log(query);
     return <div className='mainContent'>
       <div className='navigation'>
         <LeftNavigationButton onClick={previousPage}
           text='PREVIOUS' hide={firstPage} disabled={loading} />
+        <SearchBar query={query} onChange={onSearch} />
         <RightNavigationButton onClick={nextPage}
           text='NEXT' hide={lastPage} disabled={loading}/>
       </div>

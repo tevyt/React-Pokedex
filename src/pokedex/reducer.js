@@ -6,14 +6,16 @@ const {
   PREVIOUS_PAGE, 
   LOAD_POKEMON_START,
   LOAD_POKEMON_SUCCESS,
-  LOAD_POKEMON_FAILED
+  LOAD_POKEMON_FAILED,
+  SEARCH_POKEMON
  } = actionTypes;
 
 const nextPage = (state) => { 
   const { page } = state;
   return {
     ...state, 
-    page: page + 1
+    page: page + 1,
+    changed: true
   };
 };
 
@@ -21,7 +23,17 @@ const previousPage = (state) => {
   const { page } = state;
   return {
     ...state,
-    page: page - 1 || 1
+    page: page - 1 || 1,
+    changed: true
+  };
+};
+
+const searchPokemon = (state, { query }) => {
+  return {
+    ...state,
+    query,
+    page: 1,
+    changed: true
   };
 };
 
@@ -31,16 +43,17 @@ const loadPokemonStart = (state) => {
     loading: true,
     loaded: false,
     failed: false,
+    changed: false
   };
 };
 
-const loadPokemonSuccess = (state, action) => {
-  const { pokemon } = action;
+const loadPokemonSuccess = (state, { pokemon }) => {
   return {
     ...state,
     loading: false,
     loaded: true,
     failed: false,
+    changed: false,
     pokemon
   };
 };
@@ -50,7 +63,8 @@ const loadPokemonFailed = (state) => {
     ...state,
     loading: false,
     loaded: false,
-    failed: true
+    failed: true,
+    changed: false
   };
 };
 
@@ -59,12 +73,14 @@ const initalState = {
   loaded: false,
   loading: false,
   failed: false,
+  changed: false,
   pokemon: []
 };
 
 export default handleActions({
   [NEXT_PAGE]: nextPage,
   [PREVIOUS_PAGE]: previousPage,
+  [SEARCH_POKEMON]: searchPokemon,
   [LOAD_POKEMON_START]: loadPokemonStart,
   [LOAD_POKEMON_SUCCESS]: loadPokemonSuccess,
   [LOAD_POKEMON_FAILED]: loadPokemonFailed
