@@ -15,6 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
+        <Route exact path="/" component={Pokedex} />
         <Route path="/pokedex" component={Pokedex} />
       </App>
     </Router>
