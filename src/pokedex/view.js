@@ -18,14 +18,14 @@ export default class PokemonList extends React.Component {
   }
 
   componentWillMount() {
-    const { page, query, loadPokemon } = this.props;
-    loadPokemon(page, query);
+    const { page, query, loadPokedexPage } = this.props;
+    loadPokedexPage(page, query);
   }
 
   componentDidUpdate() {
-    const { page, query, pokemonShouldLoad, loadPokemon } = this.props;
+    const { page, query, pokemonShouldLoad, loadPokedexPage } = this.props;
     if (pokemonShouldLoad) {
-      loadPokemon(page, query);
+      loadPokedexPage(page, query);
     }
   }
 
@@ -52,16 +52,16 @@ export default class PokemonList extends React.Component {
           {pokemon.map((monster, index) => {
             return <PokedexEntry 
               key={index}
-              pokedexNumber={monster['pokedex_number']}
-              name={monster['name']}
-              primaryType={monster['primary_type']}
-              secondaryType={monster['secondary_type']}
-              image={pokemonImageUrl(monster['pokedex_number'])} />;
+              pokedexNumber={monster.pokedexNumber}
+              name={monster.name}
+              primaryType={monster.primaryType}
+              secondaryType={monster.secondaryType}
+              image={pokemonImageUrl(monster.pokedexNumber)} />;
           })}
         </div> :
        <div className='no-results-message'>
         {query ? 
-          <span>No Pokemon match {`"${query}"`}</span> :
+          <span>No Pokemon match "{query}"</span> :
           null}
        </div> 
       }

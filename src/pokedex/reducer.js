@@ -4,9 +4,9 @@ import { actionTypes } from './actions';
 const { 
   NEXT_PAGE, 
   PREVIOUS_PAGE, 
-  LOAD_POKEMON_START,
-  LOAD_POKEMON_SUCCESS,
-  LOAD_POKEMON_FAILED,
+  LOAD_POKEDEX_PAGE_START,
+  LOAD_POKEDEX_PAGE_SUCCESS,
+  LOAD_POKEDEX_PAGE_FAILED,
   SEARCH_POKEMON
  } = actionTypes;
 
@@ -37,7 +37,7 @@ const searchPokemon = (state, { query }) => {
   };
 };
 
-const loadPokemonStart = (state) => {
+const loadPokedexPageStart = (state) => {
   return {
     ...state,
     loading: true,
@@ -47,7 +47,7 @@ const loadPokemonStart = (state) => {
   };
 };
 
-const loadPokemonSuccess = (state, { pokemon }) => {
+const loadPokedexPageSuccess = (state, { pokemon }) => {
   return {
     ...state,
     loading: false,
@@ -58,7 +58,7 @@ const loadPokemonSuccess = (state, { pokemon }) => {
   };
 };
 
-const loadPokemonFailed = (state) => {
+const loadPokedexPageFailed = (state) => {
   return {
     ...state,
     loading: false,
@@ -82,7 +82,7 @@ export default handleActions({
   [NEXT_PAGE]: nextPage,
   [PREVIOUS_PAGE]: previousPage,
   [SEARCH_POKEMON]: searchPokemon,
-  [LOAD_POKEMON_START]: loadPokemonStart,
-  [LOAD_POKEMON_SUCCESS]: loadPokemonSuccess,
-  [LOAD_POKEMON_FAILED]: loadPokemonFailed
+  [LOAD_POKEDEX_PAGE_START]: loadPokedexPageStart,
+  [LOAD_POKEDEX_PAGE_SUCCESS]: loadPokedexPageSuccess,
+  [LOAD_POKEDEX_PAGE_FAILED]: loadPokedexPageFailed
 }, initalState);

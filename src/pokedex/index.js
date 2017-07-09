@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import View from './view';
-import { nextPage, previousPage, loadPokemon, searchPokemon } from './actions';
+import { nextPage, previousPage, loadPokedexPage, searchPokemon } from './actions';
 
 const NUMBER_OF_POKEMON = 721;
 const POKEMON_PER_PAGE = 20;
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadPokemon: (page, query) => dispatch(loadPokemon(page, query)),
+    loadPokedexPage: (page, query) => dispatch(loadPokedexPage(page, query)),
     nextPage: () => dispatch(nextPage()),
     previousPage: () => dispatch(previousPage()),
     onSearch: (query) => dispatch(searchPokemon(query))

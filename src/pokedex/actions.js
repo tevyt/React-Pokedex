@@ -3,19 +3,19 @@ import { getPokemon } from './services';
 const NEXT_PAGE = 'NEXT_PAGE';
 const PREVIOUS_PAGE = 'PREVIOUS_PAGE';
 const SEARCH_POKEMON = 'SEARCH_POKEMON';
-const LOAD_POKEMON = 'LOAD_POKEMON';
-const LOAD_POKEMON_START = 'LOAD_POKEMON_START';
-const LOAD_POKEMON_SUCCESS = 'LOAD_POKEMON_SUCCESS';
-const LOAD_POKEMON_FAILED = 'LOAD_POKEMON_FAILED';
+const LOAD_POKEDEX_PAGE = 'LOAD_POKEDEX_PAGE';
+const LOAD_POKEDEX_PAGE_START = 'LOAD_POKEDEX_PAGE_START';
+const LOAD_POKEDEX_PAGE_SUCCESS = 'LOAD_POKEDEX_PAGE_SUCCESS';
+const LOAD_POKEDEX_PAGE_FAILED = 'LOAD_POKEDEX_PAGE_FAILED';
 
 export const actionTypes = {
   NEXT_PAGE,
   PREVIOUS_PAGE,
   SEARCH_POKEMON,
-  LOAD_POKEMON_START,
-  LOAD_POKEMON_SUCCESS,
-  LOAD_POKEMON_FAILED,
-  LOAD_POKEMON
+  LOAD_POKEDEX_PAGE_START,
+  LOAD_POKEDEX_PAGE_SUCCESS,
+  LOAD_POKEDEX_PAGE_FAILED,
+  LOAD_POKEDEX_PAGE
 };
 
 export const nextPage = () => {
@@ -37,31 +37,31 @@ export const searchPokemon = (query) => {
   };
 };
 
-export const loadPokemonStart = () => {
+export const loadPokedexPageStart = () => {
   return {
-    type: LOAD_POKEMON_START
+    type: LOAD_POKEDEX_PAGE_START
   };
 };
 
-export const loadPokemonSuccess = (pokemon) => {
+export const loadPokedexPageSuccess = (pokemon) => {
   return {
-    type: LOAD_POKEMON_SUCCESS,
+    type: LOAD_POKEDEX_PAGE_SUCCESS,
     pokemon
   }
 };
 
-export const loadPokemonFailed = () => {
+export const loadPokedexPageFailed = () => {
   return {
-    type: LOAD_POKEMON_FAILED
+    type: LOAD_POKEDEX_PAGE_FAILED
   };
 };
 
-export const loadPokemon = (page, query) => async (dispatch) => {
-  dispatch(loadPokemonStart());
+export const loadPokedexPage = (page, query) => async (dispatch) => {
+  dispatch(loadPokedexPageStart());
   try {
     const pokemon = await getPokemon(page, query);
-    dispatch(loadPokemonSuccess(pokemon));
+    dispatch(loadPokedexPageSuccess(pokemon));
   }catch (e){
-    dispatch(loadPokemonFailed());
+    dispatch(loadPokedexPageFailed());
   }
 };
